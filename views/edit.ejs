@@ -1,0 +1,45 @@
+<%- include partials/header %>
+
+<div class="container mt-4">
+    <h3>Edit Restaurant:</h3>
+
+    <% if(errors != undefined){ %>
+        <ul class="list-unstyled">
+            <% errors.forEach(function(error){ %>
+                <li class="text-danger"><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <form method="POST" action="/restaurant/update">
+        <div class="mb-3">
+            <label for="name" class="form-label">* Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="<%= restaurant.name %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="food_type" class="form-label">* Food Type:</label>
+            <input type="text" class="form-control" id="food_type" name="food_type" value="<%= restaurant.food_type %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phonenumber" class="form-label">* Phone Number:</label>
+            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="<%= restaurant.phonenumber %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="website" class="form-label">* Website:</label>
+            <input type="text" class="form-control" id="website" name="website" value="<%= restaurant.website %>" size="50" required>
+        </div>
+
+        <input type="hidden" name="id" value="<%= restaurant._id %>">
+        <input type="hidden" name="rev" value="<%= restaurant._rev %>">
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href = 'https://csc570e.uis.edu:9465/'">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<%- include partials/footer %>
